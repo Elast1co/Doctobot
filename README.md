@@ -2,7 +2,7 @@
 We Are Medical Web-App For Online Booking For ( Doctors - Nurses )
 
 # Features:
-1. Build WebBased-app suitable for patient, doctors , nurses requirements.
+1. Build WebBased-App suitable for patient, doctors , nurses requirements.
 2. Built the RESTful API of the App.
 3. Divide the departments into a group of categories. Each department is specialized for specific doctors and nurses.
 4. CRUD operations for different User ( Doctor - Nurses - Patient - Mangers).
