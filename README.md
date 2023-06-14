@@ -19,29 +19,32 @@ We Are Medical Web-App For Online Booking For ( Doctors - Nurses )
 
 ## File Structure 
 
-├── server.js  
+```bash
+
+├── app.js  
 ├── package.json
 ├── package-lock.json
 ├── .env
 ├── uploads/
 ├── routes/
-│   ├── category.js
+│   ├── reservation.js
 │   └── ...
 └── controllers/
-    ├── category.js
+    ├── reservation.js
     └── ...
 └── middlewares/
     ├── multer.js
     └── ...
 └── controllers/
-    ├── category.js
+    ├── reservation.js
     └── ...
 └── models/
-    ├── category.js
+    ├── reservation.js
     └── ...
 └── utils/
-    ├── apiError.js
+    ├── errorHandling.js
     └── ...
+```
     
 # Prerequisites
 Node.js and npm (comes with Node) installed on your machine. You can download them from nodejs.org
