@@ -6,11 +6,11 @@ const multerOptions = () => {
     destination: (req, file, cb) => {
       cb(null, "uploads/categories"); // Specify the directory where files should be saved
     },
-    filename: (req, file, cb) => {
-      const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-      const filename = `category-${uniqueSuffix}-${file.originalname}`;
-      cb(null, filename);
-    },
+      filename: (req, file, cb) => {
+        const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+        const filename = `category-${uniqueSuffix}-${file.originalname}`;
+        cb(null, filename);
+      },
   });
 
   const multerFilter = function (req, file, cb) {

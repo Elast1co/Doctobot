@@ -68,7 +68,7 @@ const doctorSchema = new mongoose.Schema({
 });
 const setImageURL = (doc) => {
   if (doc.image) {
-    const imageUrl = `${process.env.BASE_URL}/doctors/${doc.image}`;
+    const imageUrl = `${doc.image}`;
     doc.image = imageUrl;
   }
 };
