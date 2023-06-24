@@ -14,8 +14,27 @@ const DoctorCalendar = new mongoose.Schema(
         "Friday",
       ],
     },
-    date: {
+    month: {
       type: String,
+      enum: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ],
+    },
+    day: {
+      type: Number,
+      min:1,
+      max:30
     },
     startAt: {
       type: String,
@@ -23,9 +42,9 @@ const DoctorCalendar = new mongoose.Schema(
     endAt: {
       type: String,
     },
-    duration: {
-      type: Number,
-      enum: [5, 15, 30, 60],
+    statys: {
+      type: string,
+      enum: ["Avilable " , "Busy"],
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,

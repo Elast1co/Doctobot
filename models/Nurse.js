@@ -26,6 +26,10 @@ const nurseSchema = new mongoose.Schema({
     enum: ["Morning", "Afternoon", "Night"],
     required: true,
   },
+  price: {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
     enum: [1, 2, 3, 4, 5],

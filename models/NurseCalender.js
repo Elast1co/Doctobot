@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const { string } = require("sharp/lib/is");
 
-const NurseCalendar = new mongoose.Schema(
+const DoctorCalendar = new mongoose.Schema(
   {
     weekday: {
       type: String,
@@ -15,8 +14,27 @@ const NurseCalendar = new mongoose.Schema(
         "Friday",
       ],
     },
-    date: {
+    month: {
       type: String,
+      enum: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ],
+    },
+    day: {
+      type: Number,
+      min:1,
+      max:30
     },
     startAt: {
       type: String,
@@ -24,15 +42,15 @@ const NurseCalendar = new mongoose.Schema(
     endAt: {
       type: String,
     },
-    duration: {
+    statys: {
       type: string,
+      enum: ["Avilable " , "Busy"],
     },
     nurse: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Nurse",
-      
     },
   },
   { discriminatorKey: "calender" }
 );
-module.exports = mongoose.model("NurseCalender", NurseCalendar);
+module.exports = mongoose.model("DoctorCalender", DoctorCalendar);

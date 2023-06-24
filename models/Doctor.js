@@ -53,6 +53,10 @@ const doctorSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  price: {
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,
