@@ -42,9 +42,9 @@ const DoctorCalendar = new mongoose.Schema(
     endAt: {
       type: String,
     },
-    statys: {
-      type: string,
-      enum: ["Avilable " , "Busy"],
+    status: {
+      type: String,
+      enum: ["Available", "Busy"],
     },
     nurse: {
       type: mongoose.Schema.Types.ObjectId,
@@ -53,4 +53,4 @@ const DoctorCalendar = new mongoose.Schema(
   },
   { discriminatorKey: "calender" }
 );
-module.exports = mongoose.model("DoctorCalender", DoctorCalendar);
+module.exports = mongoose.model("NurseCalender", DoctorCalendar);

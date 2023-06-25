@@ -42,9 +42,9 @@ const DoctorCalendar = new mongoose.Schema(
     endAt: {
       type: String,
     },
-    statys: {
-      type: string,
-      enum: ["Avilable " , "Busy"],
+    status: {
+      type: String,
+      enum: ["Available" , "Busy"],
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,
