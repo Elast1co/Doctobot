@@ -28,13 +28,13 @@ const DoctorCalendar = new mongoose.Schema(
         "September",
         "October",
         "November",
-        "December"
+        "December",
       ],
     },
     day: {
       type: Number,
-      min:1,
-      max:30
+      min: 1,
+      max: 30,
     },
     startAt: {
       type: String,
@@ -44,7 +44,7 @@ const DoctorCalendar = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Available" , "Busy"],
+      enum: ["Avilable", "Busy"],
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,
