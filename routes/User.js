@@ -14,8 +14,6 @@ const {
   createUser,
   updateUser,
   deleteUser,
-  uploadUserImage,
-  resizeImage,
   changeUserPassword,
   getLoggedUserData,
   updateLoggedUserPassword,
@@ -24,7 +22,8 @@ const {
 } = require("../services/User");
 
 const authService = require("../services/Authentication");
-
+const { uploadPhoto } = require("../middlewares/mullter");
+let type = uploadPhoto.single("image");
 const router = express.Router();
 
 router.use(authService.protect);
@@ -44,11 +43,11 @@ router.put(
 router
   .route("/")
   .get(getUsers)
-  .post(uploadUserImage, resizeImage, createUserValidator, createUser);
+  .post(type, createUserValidator, createUser);
 router
   .route("/:id")
   .get(getUserValidator, getUser)
-  .put(uploadUserImage, resizeImage, updateUserValidator, updateUser)
+  .put(type, updateUserValidator, updateUser)
   .delete(deleteUserValidator, deleteUser);
 
 module.exports = router;

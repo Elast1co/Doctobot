@@ -15,10 +15,10 @@ const {
   createNurse,
   updateNurse,
   deleteNurse,
-  uploadNurseImage,
-  resizeImage,
 } = require("../services/Nurse");
 
+const { uploadPhoto } = require("../middlewares/mullter");
+let type = uploadPhoto.single("image");
 const router = express.Router();
 
 router
@@ -27,8 +27,8 @@ router
   .post(
     authService.protect,
     authService.allowedTo("admin", "manager"),
-    uploadNurseImage,
-    resizeImage,
+    type,
+    // resizeImage,
     createNurseValidator,
     createNurse
   ); // Added callback function for post method
@@ -39,7 +39,7 @@ router
   .put(
     authService.protect,
     authService.allowedTo("admin", "manager"),
-    updateNurseValidator,
+    type,
     updateNurse
   )
   .delete(

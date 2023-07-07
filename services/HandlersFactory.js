@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const ApiError = require("../utils/apiError");
 const ApiFeatures = require("../utils/apiFeatures");
+const {extractUrl} = require("../utils/updloadImage")
+
 
 exports.deleteOne = (Model) =>
   asyncHandler(async (req, res, next) => {
@@ -15,10 +17,14 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   asyncHandler(async (req, res, next) => {
+    if(req.file){
+    req.body.image = await extractUrl(req.file , `imges`)
+    }
+    console.log(req.file);
     const document = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-
+console.log(document);
     if (!document) {
       return next(
         new ApiError(`No document for this id ${req.params.id}`, 404)
@@ -30,6 +36,9 @@ exports.updateOne = (Model) =>
 exports.createOne = (Model) =>
   asyncHandler(async (req, res) => {
     console.log(req.body);
+    if(req.file){
+      req.body.image = extractUrl(req.file , 'imges')
+      }
     const newDoc = await Model.create(req.body);
     res.status(201).json({ data: newDoc });
   });

@@ -14,9 +14,11 @@ const {
   updateCategory,
   deleteCategory,
   uploadCategoryImage,
-  resizeImage,
+  // resizeImage,
 } = require("../services/Category");
 
+const { uploadPhoto } = require("../middlewares/mullter");
+let type = uploadPhoto.single("image");
 const authService = require("../services/Authentication");
 
 const router = express.Router();
@@ -27,8 +29,8 @@ router
   .post(
     authService.protect,
     authService.allowedTo("admin", "manager"),
-    uploadCategoryImage,
-    resizeImage,
+    type,
+    // resizeImage,
     createCategoryValidator,
     createCategory
   );
@@ -38,8 +40,8 @@ router
   .put(
     authService.protect,
     authService.allowedTo("admin", "manager"),
-    uploadCategoryImage,
-    resizeImage,
+    type,
+    // resizeImage,
     updateCategoryValidator,
     updateCategory
   )

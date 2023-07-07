@@ -4,35 +4,34 @@ const fs = require("fs");
 const asyncHandler = require("express-async-handler");
 
 const factory = require("./HandlersFactory");
-const { uploadSingleImage } = require("../middlewares/mullter");
 const { cloudinaryUploadImage } = require("../middlewares/Cloudinary");
 const Doctor = require("../models/Doctor");
 
 // Upload single image
-exports.uploadDoctorImage = uploadSingleImage("image");
+// exports.uploadDoctorImage = uploadSingleImage("image");
 
-exports.resizeImage = asyncHandler(async (req, res, next) => {
-  // const filename = `category-${uuidv4()}-${Date.now()}.jpeg`;
+// exports.resizeImage = asyncHandler(async (req, res, next) => {
+//   // const filename = `category-${uuidv4()}-${Date.now()}.jpeg`;
 
-  if (req.file) {
-    const imagePath = req.file.path;
+//   if (req.file) {
+//     const imagePath = req.file.path;
 
-    const uploadedImage = await cloudinaryUploadImage(imagePath);
+//     // const uploadedImage = await cloudinaryUploadImage(imagePath);
 
-    if (uploadedImage.error) {
-      // Handle error uploading image to Cloudinary
-      return next(new Error("Failed to upload image to Cloudinary"));
-    }
+//     if (uploadedImage.error) {
+//       // Handle error uploading image to Cloudinary
+//       return next(new Error("Failed to upload image to Cloudinary"));
+//     }
 
-    // Remove the original uploaded file
-    fs.unlinkSync(imagePath);
+//     // Remove the original uploaded file
+//     fs.unlinkSync(imagePath);
 
-    // Save Cloudinary image URL into req.body
-    req.body.image = uploadedImage.secure_url;
-  }
+//     // Save Cloudinary image URL into req.body
+//     req.body.image = uploadedImage.secure_url;
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // Get list of doctors
 exports.getDoctors = factory.getAll(Doctor);
