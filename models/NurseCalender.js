@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const DoctorCalendar = new mongoose.Schema(
+const NurseCalender = new mongoose.Schema(
   {
     weekday: {
       type: String,
@@ -53,4 +53,4 @@ const DoctorCalendar = new mongoose.Schema(
   },
   { discriminatorKey: "calender" }
 );
-module.exports = mongoose.model("DoctorCalender", DoctorCalendar);
+module.exports = mongoose.model("NurseCalender", NurseCalender);
