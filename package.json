@@ -2,9 +2,9 @@
   "name": "nodejs-doctobot-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon index.js",
+    "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production node server.js"
   },
   "keywords": [],
