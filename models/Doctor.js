@@ -24,6 +24,7 @@ const doctorSchema = new mongoose.Schema({
       "Surgery",
       "Other",
     ],
+
     required: true,
   },
   rating: {
